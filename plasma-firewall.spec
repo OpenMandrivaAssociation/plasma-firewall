@@ -7,12 +7,14 @@
 
 Name: plasma-firewall
 Version: 5.21.0
-Release: 2
+Release: 3
 Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Summary: Firewall module for System Settings
 URL: http://kde.org/
 License: GPL
 Group: Graphical desktop/KDE
+# (tpg) fix path to iproute2 ss
+Patch0: plasma-firewall-5.21.0-fix-path-to-ss.patch
 BuildRequires: cmake(ECM)
 BuildRequires: cmake(Qt5Quick)
 BuildRequires: cmake(Qt5Xml)
@@ -33,7 +35,9 @@ BuildRequires: cmake(KF5Codecs)
 BuildRequires: cmake(Qt5QmlModels)
 BuildRequires: cmake(KF5Service)
 BuildRequires: cmake(KF5Package)
-Conflicts: nx-firewall
+Requires: iproute2
+Requires: net-tools
+%rename nx-firewall
 %if %{with firewalld}
 Requires: firewalld
 %else

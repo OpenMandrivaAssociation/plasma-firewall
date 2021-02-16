@@ -1,0 +1,24 @@
+diff -Naur a/kcm/backends/netstat/netstatclient.cpp b/kcm/backends/netstat/netstatclient.cpp
+--- a/kcm/backends/netstat/netstatclient.cpp	2021-02-11 12:14:38.000000000 +0000
++++ b/kcm/backends/netstat/netstatclient.cpp	2021-02-16 13:50:50.003000000 +0000
+@@ -20,7 +20,7 @@
+     , m_connections(new ConnectionsModel(this))
+ {
+     _self = this;
+-    mHasSS = !QStandardPaths::findExecutable("ss").isEmpty();
++    mHasSS = !QStandardPaths::findExecutable("/sbin/ss").isEmpty();
+ }
+ 
+ bool NetstatClient::hasSS() const
+diff -Naur a/kcm/backends/netstat/netstathelper.cpp b/kcm/backends/netstat/netstathelper.cpp
+--- a/kcm/backends/netstat/netstathelper.cpp	2021-02-11 12:14:38.000000000 +0000
++++ b/kcm/backends/netstat/netstathelper.cpp	2021-02-16 13:49:09.434000000 +0000
+@@ -33,7 +33,7 @@
+      */
+ 
+     const QStringList netstatArgs( m_hasTimeoutError ? QStringList({"-tuap"}) : QStringList({"-tuapr"}));
+-    const QString executable = QStringLiteral("ss");
++    const QString executable = QStringLiteral("/sbin/ss");
+ 
+     connect(
+         m_executableProcess,  QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished),
