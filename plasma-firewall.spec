@@ -62,6 +62,18 @@ Firewall module for System Settings.
 
 %install
 %ninja_install -C build
+
+# (tpg) get rid of UFW when it is not default firewall backend
+%if %{without firewalld}
+rm -rf %{_libdir}/libexec/kauth/kde_ufw_plugin_helper
+rm -rf %{_libdir}/libexec/kde_ufw_plugin_helper.py
+rm -rf %{_libdir}/qt5/plugins/kf5/plasma_firewall/ufwbackend.so
+rm -rf %{_datadir}/dbus-1/system-services/org.kde.ufw.service
+rm -rf %{_datadir}/dbus-1/system.d/org.kde.ufw.conf
+rm -rf %{_datadir}/kcm_ufw
+rm -rf %{_datadir}/polkit-1/actions/org.kde.ufw.policy
+%endif
+
 %find_lang %{name} --all-name --with-html
 
 %files -f %{name}.lang
