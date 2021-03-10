@@ -6,7 +6,7 @@
 %bcond_without firewalld
 
 Name: plasma-firewall
-Version: 5.21.1
+Version: 5.21.2
 Release: 1
 Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Summary: Firewall module for System Settings
