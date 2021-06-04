@@ -1,4 +1,3 @@
-%define debug_package %{nil}
 %define plasmaver %(echo %{version} |cut -d. -f1-3)
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 
@@ -6,7 +5,7 @@
 %bcond_without firewalld
 
 Name: plasma-firewall
-Version: 5.21.5
+Version: 5.22.0
 Release: 1
 Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Summary: Firewall module for System Settings
