@@ -1,19 +1,19 @@
-diff -Naur a/kcm/backends/netstat/netstatclient.cpp b/kcm/backends/netstat/netstatclient.cpp
---- a/kcm/backends/netstat/netstatclient.cpp	2021-02-11 12:14:38.000000000 +0000
-+++ b/kcm/backends/netstat/netstatclient.cpp	2021-02-16 13:50:50.003000000 +0000
-@@ -20,7 +20,7 @@
+diff -up plasma-firewall-5.24.0/kcm/backends/netstat/netstatclient.cpp.1~ plasma-firewall-5.24.0/kcm/backends/netstat/netstatclient.cpp
+--- plasma-firewall-5.24.0/kcm/backends/netstat/netstatclient.cpp.1~	2022-02-10 01:23:32.483027564 +0100
++++ plasma-firewall-5.24.0/kcm/backends/netstat/netstatclient.cpp	2022-02-10 01:24:03.310107468 +0100
+@@ -20,7 +20,7 @@ NetstatClient::NetstatClient(QObject *pa
      , m_connections(new ConnectionsModel(this))
  {
      _self = this;
--    mHasSS = !QStandardPaths::findExecutable("ss").isEmpty();
-+    mHasSS = !QStandardPaths::findExecutable("/sbin/ss").isEmpty();
+-    mHasSS = !QStandardPaths::findExecutable(QStringLiteral("ss")).isEmpty();
++    mHasSS = !QStandardPaths::findExecutable(QStringLiteral("/sbin/ss")).isEmpty();
  }
  
  bool NetstatClient::hasSS() const
-diff -Naur a/kcm/backends/netstat/netstathelper.cpp b/kcm/backends/netstat/netstathelper.cpp
---- a/kcm/backends/netstat/netstathelper.cpp	2021-02-11 12:14:38.000000000 +0000
-+++ b/kcm/backends/netstat/netstathelper.cpp	2021-02-16 13:49:09.434000000 +0000
-@@ -33,7 +33,7 @@
+diff -up plasma-firewall-5.24.0/kcm/backends/netstat/netstathelper.cpp.1~ plasma-firewall-5.24.0/kcm/backends/netstat/netstathelper.cpp
+--- plasma-firewall-5.24.0/kcm/backends/netstat/netstathelper.cpp.1~	2022-02-03 15:39:48.000000000 +0100
++++ plasma-firewall-5.24.0/kcm/backends/netstat/netstathelper.cpp	2022-02-10 01:23:32.483027564 +0100
+@@ -33,7 +33,7 @@ void NetstatHelper::query()
       */
  
      const QStringList netstatArgs( m_hasTimeoutError ? QStringList({"-tuap"}) : QStringList({"-tuapr"}));

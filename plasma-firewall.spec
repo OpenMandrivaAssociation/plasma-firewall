@@ -1,12 +1,12 @@
 %define plasmaver %(echo %{version} |cut -d. -f1-3)
-%define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
+%define stable %([ "$(echo %{version} |cut -d. -f3)" -ge 80 ] && echo -n un; echo -n stable)
 
-# (tpg) firewalld is default backend, disling it a ufw backend is default
+# (tpg) firewalld is default backend, disable it so ufw backend becomes default
 %bcond_without firewalld
 
 Name: plasma-firewall
-Version: 5.23.5
-Release: 2
+Version: 5.24.0
+Release: 1
 Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Summary: Firewall module for System Settings
 URL: http://kde.org/
@@ -92,7 +92,7 @@ rm -rf %{buildroot}%{_datadir}/polkit-1/actions/org.kde.ufw.policy
 %{_datadir}/polkit-1/actions/org.kde.ufw.policy
 %endif
 %{_libdir}/libkcm_firewall_core.so
-%{_libdir}/qt5/plugins/kcms/kcm_firewall.so
 %{_datadir}/kpackage/kcms/kcm_firewall
-%{_datadir}/kservices5/kcm_firewall.desktop
 %{_datadir}/metainfo/org.kde.plasma.firewall.metainfo.xml
+%{_libdir}/qt5/plugins/plasma/kcms/systemsettings/kcm_firewall.so
+%{_datadir}/applications/kcm_firewall.desktop
