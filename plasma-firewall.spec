@@ -5,15 +5,13 @@
 %bcond_without firewalld
 
 Name: plasma-firewall
-Version: 5.26.5
+Version: 5.27.0
 Release: 1
 Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Summary: Firewall module for System Settings
 URL: http://kde.org/
 License: GPL
 Group: Graphical desktop/KDE
-# (tpg) fix path to iproute2 ss
-Patch0: plasma-firewall-5.21.0-fix-path-to-ss.patch
 BuildRequires: cmake(ECM)
 BuildRequires: cmake(Qt5Quick)
 BuildRequires: cmake(Qt5Xml)
