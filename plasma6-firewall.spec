@@ -1,7 +1,7 @@
 %define plasmaver %(echo %{version} |cut -d. -f1-3)
 %define stable %([ "$(echo %{version} |cut -d. -f3)" -ge 80 ] && echo -n un; echo -n stable)
 
-%define git 20230606
+%define git 20230610
 
 # (tpg) firewalld is default backend, disable it so ufw backend becomes default
 %bcond_without firewalld
@@ -100,7 +100,6 @@ rm -rf %{buildroot}%{_datadir}/polkit-1/actions/org.kde.ufw.policy
 %{_datadir}/polkit-1/actions/org.kde.ufw.policy
 %endif
 %{_libdir}/libkcm_firewall_core.so
-%{_datadir}/kpackage/kcms/kcm_firewall
 %{_datadir}/metainfo/org.kde.plasma.firewall.metainfo.xml
 %{_qtdir}/plugins/plasma/kcms/systemsettings/kcm_firewall.so
 %{_datadir}/applications/kcm_firewall.desktop
