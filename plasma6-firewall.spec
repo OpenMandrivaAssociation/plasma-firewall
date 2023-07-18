@@ -39,6 +39,7 @@ BuildRequires: cmake(KF6Codecs)
 BuildRequires: cmake(Qt6QmlModels)
 BuildRequires: cmake(KF6Service)
 BuildRequires: cmake(KF6Package)
+BuildRequires: plasma6-xdg-desktop-portal-kde
 Requires: iproute2
 Requires: net-tools
 %rename nx-firewall
