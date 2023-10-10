@@ -6,7 +6,7 @@
 
 Name: plasma-firewall
 Version: 5.27.8
-Release: 1
+Release: 2
 Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/%{name}-%{version}.tar.xz
 Summary: Firewall module for System Settings
 URL: http://kde.org/
