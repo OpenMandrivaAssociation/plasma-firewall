@@ -1,7 +1,7 @@
 %define plasmaver %(echo %{version} |cut -d. -f1-3)
 %define stable %([ "$(echo %{version} |cut -d. -f3)" -ge 80 ] && echo -n un; echo -n stable)
 
-%define git 20231023
+%define git 20231104
 
 # (tpg) firewalld is default backend, disable it so ufw backend becomes default
 %bcond_without firewalld
