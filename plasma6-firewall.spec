@@ -6,8 +6,8 @@
 %bcond_without firewalld
 
 Name: plasma6-firewall
-Version: 5.27.80
-Release: %{?git:0.%{git}.}2
+Version: 5.90.0
+Release: %{?git:0.%{git}.}1
 %if 0%{?git:1}
 Source0: https://invent.kde.org/plasma/plasma-firewall/-/archive/master/plasma-firewall-master.tar.bz2#/plasma-firewall-%{git}.tar.bz2
 %else
@@ -21,8 +21,8 @@ BuildRequires: cmake(ECM)
 BuildRequires: cmake(Qt6)
 BuildRequires: cmake(Qt6Quick)
 BuildRequires: cmake(Qt6Xml)
-BuildRequires: cmake(KF6Plasma)
-BuildRequires: cmake(KF6PlasmaQuick)
+BuildRequires: cmake(Plasma) >= 5.90.0
+BuildRequires: cmake(PlasmaQuick) >= 5.90.0
 BuildRequires: cmake(KF6I18n)
 BuildRequires: cmake(KF6Declarative)
 BuildRequires: cmake(KF6Auth)
