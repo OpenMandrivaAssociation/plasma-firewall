@@ -1,6 +1,6 @@
 %define plasmaver %(echo %{version} |cut -d. -f1-3)
 %define stable %([ "$(echo %{version} |cut -d. -f2)" -ge 80 -o "$(echo %{version} |cut -d. -f3)" -ge 80 ] && echo -n un; echo -n stable)
-%define git 20240217
+%define git 20240222
 %define gitbranch Plasma/6.0
 %define gitbranchd %(echo %{gitbranch} |sed -e "s,/,-,g")
 
@@ -8,7 +8,7 @@
 %bcond_without firewalld
 
 Name: plasma6-firewall
-Version: 5.94.0
+Version: 6.0.0
 Release: %{?git:0.%{git}.}1
 %if 0%{?git:1}
 Source0: https://invent.kde.org/plasma/plasma-firewall/-/archive/%{gitbranch}/plasma-firewall-%{gitbranchd}.tar.bz2#/plasma-firewall-%{git}.tar.bz2
