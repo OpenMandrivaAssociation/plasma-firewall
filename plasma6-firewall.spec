@@ -8,7 +8,7 @@
 %bcond_without firewalld
 
 Name: plasma6-firewall
-Version: 6.0.5
+Version: 6.1.0
 Release: %{?git:0.%{git}.}1
 %if 0%{?git:1}
 Source0: https://invent.kde.org/plasma/plasma-firewall/-/archive/%{gitbranch}/plasma-firewall-%{gitbranchd}.tar.bz2#/plasma-firewall-%{git}.tar.bz2
