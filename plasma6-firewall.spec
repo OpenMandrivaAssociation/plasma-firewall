@@ -16,7 +16,7 @@ Source0: https://invent.kde.org/plasma/plasma-firewall/-/archive/%{gitbranch}/pl
 Source0: http://download.kde.org/%{stable}/plasma/%{plasmaver}/plasma-firewall-%{version}.tar.xz
 %endif
 Summary: Firewall module for System Settings
-URL: http://kde.org/
+URL: https://kde.org/
 License: GPL
 Group: Graphical desktop/KDE
 BuildRequires: cmake(ECM)
