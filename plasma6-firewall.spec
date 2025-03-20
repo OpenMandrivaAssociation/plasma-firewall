@@ -9,7 +9,7 @@
 
 Name: plasma6-firewall
 Version: 6.3.3
-Release: %{?git:0.%{git}.}1
+Release: %{?git:0.%{git}.}2
 %if 0%{?git:1}
 Source0: https://invent.kde.org/plasma/plasma-firewall/-/archive/%{gitbranch}/plasma-firewall-%{gitbranchd}.tar.bz2#/plasma-firewall-%{git}.tar.bz2
 %else
