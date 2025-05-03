@@ -7,9 +7,9 @@
 # (tpg) firewalld is default backend, disable it so ufw backend becomes default
 %bcond_without firewalld
 
-Name: plasma6-firewall
+Name: plasma-firewall
 Version: 6.3.4
-Release: %{?git:0.%{git}.}2
+Release: %{?git:0.%{git}.}3
 %if 0%{?git:1}
 Source0: https://invent.kde.org/plasma/plasma-firewall/-/archive/%{gitbranch}/plasma-firewall-%{gitbranchd}.tar.bz2#/plasma-firewall-%{git}.tar.bz2
 %else
@@ -50,31 +50,24 @@ Requires: ufw
 Requires: dbus-common
 Requires: polkit
 %endif
+# Renamed after 6.0 2025-05-03
+%rename plasma6-firewall
+
+BuildSystem:	cmake
+%if %{with firewalld}
+BuildOption:	-DBUILD_FIREWALLD_BACKEND=ON
+BuildOption:	-DBUILD_UFW_BACKEND=OFF
+%else
+BuildOption:	-DBUILD_FIREWALLD_BACKEND=OFF
+BuildOption:	-DBUILD_UFW_BACKEND=ON
+%endif
+BuildOption:	-DBUILD_QCH:BOOL=ON
+BuildOption:	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON
 
 %description
 Firewall module for System Settings.
 
-%prep
-%autosetup -p1 -n plasma-firewall-%{?git:%{gitbranchd}}%{!?git:%{version}}
-%cmake \
-%if %{with firewalld}
-	-DBUILD_FIREWALLD_BACKEND=ON \
-	-DBUILD_UFW_BACKEND=OFF \
-%else
-	-DBUILD_FIREWALLD_BACKEND=OFF \
-	-DBUILD_UFW_BACKEND=ON \
-%endif
-	-DBUILD_QCH:BOOL=ON \
-	-DBUILD_WITH_QT6:BOOL=ON \
-	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON \
-	-G Ninja
-
-%build
-%ninja_build -C build
-
-%install
-%ninja_install -C build
-
+%install -a
 # (tpg) get rid of UFW when it is not default firewall backend
 %if %{with firewalld}
 rm -rf %{buildroot}%{_libdir}/libexec/kauth/kde_ufw_plugin_helper
@@ -85,8 +78,6 @@ rm -rf %{buildroot}%{_datadir}/dbus-1/system.d/org.kde.ufw.conf
 rm -rf %{buildroot}%{_datadir}/kcm_ufw
 rm -rf %{buildroot}%{_datadir}/polkit-1/actions/org.kde.ufw.policy
 %endif
-
-%find_lang %{name} --all-name --with-html
 
 %files -f %{name}.lang
 %if %{with firewalld}
